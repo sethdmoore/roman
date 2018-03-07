@@ -19,5 +19,5 @@ XXXIII
 # Compiling
 There are no external dependencies. Simply run:  
 ```
-$ go build
+$ go build -o ~/bin/roman
 ```

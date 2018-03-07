@@ -9,6 +9,8 @@ import (
 	"strings"
 )
 
+// "sane" way of making an ordered Map... a corresponding array
+// There's probably a better way of doing this.
 var Order = []int{
 	1000,
 	900,
@@ -25,6 +27,8 @@ var Order = []int{
 	1,
 }
 
+// Hard code the subtraction rules, since Roman numerals are a finite set of
+// possibilities
 var Roman = map[int]string{
 	1000: "M",
 	900:  "CM",
@@ -41,6 +45,7 @@ var Roman = map[int]string{
 	1:    "I",
 }
 
+// Ugly AF
 func printHelp() {
 	fmt.Printf("Usage: \n")
 	fmt.Printf("  roman ARG\n")
@@ -51,14 +56,20 @@ func printHelp() {
 	os.Exit(0)
 }
 
-func intToRoman(n int) (output string) {
-	for _, i := range Order {
-		for n >= i {
-			n -= i
-			output += Roman[i]
+// intToRoman is a cryptic iterates over the sorted array Order
+// then reads the corresponding key out of the map Roman.
+// We subtract each value from user input and add it to the Roman numeral
+// string.
+func intToRoman(user_integer int) (output string) {
+	for _, roman_integer := range Order {
+		// basically a while loop...
+		for user_integer >= roman_integer {
+			user_integer -= roman_integer
+			// pull the Roman numeral from our map
+			roman_output += Roman[roman_integer]
 		}
 	}
-	return output
+	return roman_output
 }
 
 func toInt(s string) (int, error) {
