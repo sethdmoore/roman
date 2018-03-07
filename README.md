@@ -1,5 +1,7 @@
 # Introduction
 Converts integers to Roman Numerals.  
+Written in golang for speed.  
+Part of a code challenge, but I considered using it in lemonbar.  
 
 # Usage
 Feed an integer as an argument  
