@@ -61,6 +61,7 @@ func printHelp() {
 // We subtract each value from user input and add it to the Roman numeral
 // string.
 func intToRoman(user_integer int) (output string) {
+	var roman_output string
 	for _, roman_integer := range Order {
 		// basically a while loop...
 		for user_integer >= roman_integer {
